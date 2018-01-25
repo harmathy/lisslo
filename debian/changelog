@@ -1,0 +1,6 @@
+lisslo (0.2) walhalla; urgency=medium
+
+  * Provide a basic description
+  * Add debian packaging
+
+ -- Max Harmathy <max.harmathy@web.de>  Thu, 25 Jan 2018 13:34:40 +0100
