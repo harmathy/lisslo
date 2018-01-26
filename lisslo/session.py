@@ -45,6 +45,12 @@ class Session():
     def is_local(self):
         return not self._session_proxy.Remote
 
+    def vt_nr(self):
+        return self._session_proxy.VTNr
+
+    def type(self):
+         return self._session_proxy.Type
+
 
 def sessions():
     for s_id, user_id, user_name, seat, object_path in _logind.ListSessions():

@@ -16,13 +16,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 from distutils.core import setup
+from lisslo import strings
 
 setup(
-    name="lisslo",
-    version="0.3",
-    description="Schedule shutdowns with logind",
+    name=strings.application,
+    version=strings.version,
+    description=strings.description,
     license="GPL3",
     packages=["lisslo"],
     scripts=["bin/lisslo-system-event", "bin/lisslo-user-session"],
-    requires=['pydbus']
+    requires=['pydbus', 'PyQt5']
 )

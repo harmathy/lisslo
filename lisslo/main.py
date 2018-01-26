@@ -15,19 +15,7 @@
 
 from argparse import ArgumentParser
 
-from lisslo import system
-from lisslo import session
-
-_arg_parser = ArgumentParser(
-    description='LiMux Schedule Shutdown with Logind'
-)
-
-
-def _add_global_arguments():
-    _arg_parser.add_argument(
-        "-s", "--schedule-file", default="/run/scheduled_shutdown",
-        help="action will be stored here"
-    )
+from lisslo import confirmation, session, strings, system
 
 
 def request_shutdown(shutdown_type):
@@ -36,45 +24,58 @@ def request_shutdown(shutdown_type):
     elif shutdown_type == "reboot":
         session.request_reboot()
     else:
-        print("Can not evaluate shutdown request!")
+        print(strings.error_request_evaluation)
         return 1
+
+
+_arg_parser = ArgumentParser(strings.description)
+
+
+def _add_global_arguments():
+    _arg_parser.add_argument(
+        "-s", "--schedule-file", default="/run/scheduled_shutdown",
+        help=strings.help_schedule_file
+    )
+    _arg_parser.add_argument(
+        "-r", "--include-remote", action="store_true", default=False,
+        help=strings.help_include_remote
+    )
 
 
 def system_event_interface():
     _add_global_arguments()
     _arg_parser.add_argument(
         "action", choices=["reboot", "poweroff", "cancel"],
-        help='schedule a shutdown with "reboot" or "poweroff" or abort a '
-             'scheduled shutdown with "cancel"'
+        help=strings.help_action
     )
     _arg_parser.add_argument(
         '-m', '--message', default="",
-        help="reason for shutdown"
+        help=strings.help_message
     )
     _arg_parser.add_argument(
         '-p', '--no-login', action="store_true", default=False,
-        help="prevent logins"
+        help=strings.help_no_login
     )
     _arg_parser.add_argument(
         '-f', '--no-login-flag', default="/run/nologin",
-        help="flag file for preventing login"
+        help=strings.help_no_login_flag
     )
     args = _arg_parser.parse_args()
 
     if args.action == "cancel":
-        print("Cancel any scheduled shutdown.")
+        print(strings.status_cancel)
         system.allow_login(args.no_login_flag)
         system.unschedule_shutdown(args.schedule_file)
         return
 
     if session.no_users():
-        print("There are no users sessions running. Hence we shutdown.")
+        print(strings.status_shutdown)
         if args.action == "request_reboot":
             session.request_reboot()
         if args.action == "poweroff":
             session.request_power_off()
     else:
-        print("There are users sessions running. Hence we schedule shutdown.")
+        print(strings.status_schedule)
         system.schedule_shutdown(args.action, args.schedule_file)
         if args.no_login:
             system.prevent_login(args.message, args.no_login_flag)
@@ -84,27 +85,25 @@ def user_session_interface():
     _add_global_arguments()
     _arg_parser.add_argument(
         "-i", "--interactive", action="store_true", default=False,
-        help="get interactive confirmation from user"
+        help=strings.help_interactive
     )
     _arg_parser.add_argument(
         "-f", "--request-file", default="shutdown_request",
-        help='filename in "/run/user/$UID/" which stores users shutdown request'
+        help=strings.help_request_file
     )
     _arg_parser.add_argument(
-        "-r", "--include-remote", action="store_true", default=False,
-        help='consider remote sessions'
+        "-t", "--timeout", type=int, default=120,
+        help=strings.help_timeout
     )
+
     args = _arg_parser.parse_args()
 
     my_session = session.current_session()
     other_sessions = session.other_user_sessions(args.include_remote)
     if system.user_requested_shutdown(my_session.user_id, args.request_file):
         if len(other_sessions) > 0:
-            # todo
-            # ask user:
-            # should other sessions get killed?
-            # for now assume "No!"
-            return
+            if not confirmation.dialog(other_sessions, args.timeout):
+                return
         path = system.request_file_path(my_session.user_id, args.request_file)
         shut_down = system.read_shutdown_type(path)
         request_shutdown(shut_down)
