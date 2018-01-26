@@ -18,7 +18,6 @@ from pydbus import SystemBus
 _system_bus = SystemBus()
 _name = 'org.freedesktop.login1'
 _logind = _system_bus.get(".login1")
-_this_session = _system_bus.get(_name, "/org/freedesktop/login1/session/self")
 
 
 def request_reboot(interactive=True):
@@ -52,17 +51,23 @@ def sessions():
         yield Session(s_id, user_id, user_name, seat, object_path)
 
 
+def _this_session():
+    return _system_bus.get(_name, "/org/freedesktop/login1/session/self")
+
+
 def current_session():
-    session_id = _this_session.Id
-    user_id = _this_session.User[0]
-    user_name = _this_session.Name
-    seat = _this_session.Seat[0]
+    this_session = _this_session()
+    session_id = this_session.Id
+    user_id = this_session.User[0]
+    user_name = this_session.Name
+    seat = this_session.Seat[0]
     object_path = "/org/freedesktop/login1/session/{}".format(session_id)
     return Session(session_id, user_id, user_name, seat, object_path)
 
 
 def other_users(including_remote=False):
-    return any(session.id != _this_session.Id for session in sessions() if
+    this_session = _this_session()
+    return any(session.id != this_session.Id for session in sessions() if
                session.is_user_session() and
                (including_remote or session.is_local()))
 
