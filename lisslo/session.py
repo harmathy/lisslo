@@ -65,11 +65,15 @@ def current_session():
     return Session(session_id, user_id, user_name, seat, object_path)
 
 
-def other_users(including_remote=False):
+def other_user_sessions(including_remote=False):
     this_session = _this_session()
-    return any(session.id != this_session.Id for session in sessions() if
-               session.is_user_session() and
-               (including_remote or session.is_local()))
+    return [
+        session for session in sessions() if
+        session.is_user_session() and
+        (including_remote or session.is_local()) and
+        session.id != this_session.Id
+    ]
+
 
 def no_users():
     return all(not session.is_user_session() for session in sessions())

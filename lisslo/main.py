@@ -97,8 +97,9 @@ def user_session_interface():
     args = _arg_parser.parse_args()
 
     my_session = session.current_session()
+    other_sessions = session.other_user_sessions(args.include_remote)
     if system.user_requested_shutdown(my_session.user_id, args.request_file):
-        if session.other_users(args.include_remote):
+        if len(other_sessions) > 0:
             # todo
             # ask user:
             # should other sessions get killed?
@@ -110,6 +111,6 @@ def user_session_interface():
         return
 
     if system.shutdown_is_scheduled(args.schedule_file) and \
-            not session.other_users(args.include_remote):
+            not len(other_sessions) > 0:
         shutdown_type = system.read_shutdown_type(args.schedule_file)
         request_shutdown(shutdown_type)
