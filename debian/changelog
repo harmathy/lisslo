@@ -1,3 +1,16 @@
+lisslo (0.3) walhalla; urgency=medium
+
+  * Fix error in system interface.
+    Avoid evaluating "/org/freedesktop/login1/session/self" in module scope
+    which will fail with "GLib.Error: g-io-error-quark:
+    GDBus.Error:System.Error.ENXIO: No such device or address" when run from
+    system space.
+    Side note: GLib.Error can not be chached in Python since it does not
+    inherit "BaseException".
+  * Ignore encoding errors
+
+ -- Max Harmathy <max.harmathy@web.de>  Fri, 26 Jan 2018 11:38:08 +0100
+
 lisslo (0.2) walhalla; urgency=medium
 
   * Provide a basic description

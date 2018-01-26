@@ -19,7 +19,7 @@ from distutils.core import setup
 
 setup(
     name="lisslo",
-    version="0.2",
+    version="0.3",
     description="Schedule shutdowns with logind",
     license="GPL3",
     packages=["lisslo"],
