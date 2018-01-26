@@ -18,8 +18,8 @@ import re
 
 
 def prevent_login(message, path):
-    with open(path, "w") as handle:
-        handle.write(message)
+    with open(path, "wb") as handle:
+        handle.write(message.encode(errors="ignore"))
 
 
 def allow_login(path):
