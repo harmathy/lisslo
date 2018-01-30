@@ -102,8 +102,9 @@ def user_session_interface():
     other_sessions = session.other_user_sessions(args.include_remote)
     if system.user_requested_shutdown(my_session.user_id, args.request_file):
         if len(other_sessions) > 0:
-            if not confirmation.dialog(other_sessions, args.timeout):
-                return
+            if args.interactive:
+                if not confirmation.dialog(other_sessions, args.timeout):
+                    return
         path = system.request_file_path(my_session.user_id, args.request_file)
         shut_down = system.read_shutdown_type(path)
         request_shutdown(shut_down)
