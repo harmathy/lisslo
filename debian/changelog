@@ -1,3 +1,11 @@
+lisslo (0.4) walhalla; urgency=medium
+
+  * Pass other sessions data for further processing
+  * Ignore IDE files
+  * Add confimation dialog in Qt
+
+ -- Max Harmathy <max.harmathy@web.de>  Tue, 30 Jan 2018 13:24:49 +0100
+
 lisslo (0.3) walhalla; urgency=medium
 
   * Fix error in system interface.
