@@ -89,6 +89,13 @@ class ConfirmationDialog(QtWidgets.QDialog):
         self.accept_button = QtWidgets.QPushButton(
             text=strings.accept, parent=self.button_widget)
         self.accept_button.pressed.connect(self.on_accept)
+
+        pal = self.accept_button.palette()
+        pal.setColor(QtGui.QPalette.Button, QtGui.QColor(QtCore.Qt.red))
+        self.accept_button.setAutoFillBackground(True)
+        self.accept_button.setPalette(pal)
+        self.accept_button.update()
+
         self.button_layout.addWidget(self.accept_button)
 
     def on_timer(self):
