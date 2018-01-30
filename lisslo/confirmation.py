@@ -116,9 +116,3 @@ def dialog(other_sessions, timeout):
     app.exec()
     return confirm_dialog.shutdown
 
-
-if __name__ == "__main__":
-    from lisslo import session
-
-    value = dialog(session.sessions(), 20)
-    print(value)
