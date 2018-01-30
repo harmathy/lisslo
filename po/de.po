@@ -1,0 +1,127 @@
+# Copyright (C) 2018 Max Harmathy <max.harmathy@web.de>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+msgid ""
+msgstr ""
+"Project-Id-Version: lisslo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-30 14:25+0100\n"
+"PO-Revision-Date: 2018-01-30 14:25+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ../lisslo\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: strings.py:26
+msgid "LiMux Schedule Shutdown with Logind"
+msgstr "Herunterfahren verwalten mit Logind für LiMux"
+
+#: strings.py:29
+msgid "action will be stored here"
+msgstr "Aktion wird hier hinterlegt"
+
+#: strings.py:30
+msgid "consider not only local but also remote sessions"
+msgstr "betrachte nicht nur lokale, sondern auch Fernsitzungen"
+
+#: strings.py:31
+msgid ""
+"schedule a shutdown with \"reboot\" or \"poweroff\" or abort a scheduled "
+"shutdown with \"cancel\""
+msgstr ""
+"plane eine Aktion zum Herunterfahren ein mit  \"reboot\" zum Neustarten oder "
+"\"poweroff\" zum Ausschalten oder breche ein geplantes Herunterfahren mit "
+"\"cancel\" ab"
+
+#: strings.py:33
+msgid "reason for shutdown"
+msgstr "Grund für das Herunterfahren"
+
+#: strings.py:34
+msgid "prevent logins"
+msgstr "verhindere Anmeldungen"
+
+#: strings.py:35
+msgid "flag file for preventing login"
+msgstr "Signaldatei für die Verhinderung von Anmeldungen"
+
+#: strings.py:36
+msgid "get interactive confirmation from user"
+msgstr "verlange eine interaktive Bestätigung vom Anwender"
+
+#: strings.py:37
+msgid "filename in \"/run/user/$UID/\" which stores users shutdown request"
+msgstr ""
+"Dateiname unter \"/run/user/$UID/\", worin die vom Anwender Forderung zum "
+"Herunterfahren speichert wird"
+
+#: strings.py:39
+msgid "automatically shutdown after this timeout"
+msgstr "fahre automatisch herunter nach dem Ablauf dieser Zeit"
+
+#: strings.py:41
+msgid "Can not evaluate shutdown request!"
+msgstr "Die Aufforderung zum herunterfahren konnte nicht ausgewertet werden!"
+
+#: strings.py:43
+msgid "Cancel any scheduled shutdown."
+msgstr "Breche jegliches geplantes Herunterfahren ab."
+
+#: strings.py:44
+msgid "There are no users sessions running. Hence we shutdown."
+msgstr "Es gibt keine laufenden Benutzersitzungen. Daher fahren wir herunter."
+
+#: strings.py:45
+msgid "There are users sessions running. Hence we schedule shutdown."
+msgstr ""
+"Es gibt laufende Benutzersitzungen. Daher wird das Herunterfahren geplant "
+"und auf später verschoben."
+
+#: strings.py:49
+msgid "Ok"
+msgstr "Ja"
+
+#: strings.py:50
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: strings.py:51
+msgid "via remote"
+msgstr "via Fernaufschaltung"
+
+#: strings.py:52
+msgid "on virtual terminal "
+msgstr "auf der virtuellen Arbeitsfläche "
+
+#: strings.py:53
+msgid "Shutdown"
+msgstr "Herunterfahren"
+
+#: strings.py:54
+msgid ""
+"There are other user logged in. Their sessions will be terminated "
+"inevitably. Do you really want to shutdown?"
+msgstr ""
+"Es sind andere Anwender im System eingeloggt. Deren Sitzungen werden "
+"unweigerlich abgebrochen. Möchten Sie das System tatsächlich herunterfahren?"
+
+#: strings.py:57
+msgid "The system will automatically shutdown in {}s."
+msgstr "Das System fährt in {}s automatisch herunter."

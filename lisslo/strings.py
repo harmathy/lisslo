@@ -51,6 +51,7 @@ cancel = _("Cancel")
 remote = _("via remote")
 vt = _("on virtual terminal ")
 confirmation_title = _("Shutdown")
-confirmation_message = _("There are other user logged in. Do you really want "
+confirmation_message = _("There are other user logged in. Their sessions "
+                         "will be terminated inevitably. Do you really want "
                          "to shutdown?")
 timeout_message = _("The system will automatically shutdown in {}s.")
