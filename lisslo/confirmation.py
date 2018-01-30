@@ -40,6 +40,7 @@ class ConfirmationDialog(QtWidgets.QDialog):
         self.message_layout.addWidget(self.message_icon)
         self.message_label = QtWidgets.QLabel(
             text=strings.confirmation_message, parent=self.message_widget)
+        self.message_label.setWordWrap(True)
         self.message_layout.addWidget(self.message_label)
 
         self.session_display = QtWidgets.QListWidget(parent=self)
