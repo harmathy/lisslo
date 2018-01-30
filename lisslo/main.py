@@ -49,15 +49,15 @@ def system_event_interface():
         help=strings.help_action
     )
     _arg_parser.add_argument(
-        '-m', '--message', default="",
+        "-m", "--message", default="",
         help=strings.help_message
     )
     _arg_parser.add_argument(
-        '-p', '--no-login', action="store_true", default=False,
+        "-p", "--no-login", action="store_true", default=False,
         help=strings.help_no_login
     )
     _arg_parser.add_argument(
-        '-f', '--no-login-flag', default="/run/nologin",
+        "-f", "--no-login-flag", default="/run/nologin",
         help=strings.help_no_login_flag
     )
     args = _arg_parser.parse_args()
