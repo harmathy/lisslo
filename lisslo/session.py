@@ -81,5 +81,7 @@ def other_user_sessions(including_remote=False):
     ]
 
 
-def no_users():
-    return all(not session.is_user_session() for session in sessions())
+def no_users(including_remote=False):
+    return all(not session.is_user_session() or
+               not (including_remote or session.is_local())
+               for session in sessions())

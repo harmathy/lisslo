@@ -68,7 +68,7 @@ def system_event_interface():
         system.unschedule_shutdown(args.schedule_file)
         return
 
-    if session.no_users():
+    if session.no_users(args.include_remote):
         print(strings.status_shutdown)
         if args.action == "request_reboot":
             session.request_reboot()
