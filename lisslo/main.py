@@ -72,8 +72,10 @@ def system_event_interface():
         print(strings.status_shutdown)
         if args.action == "reboot":
             session.request_reboot()
-        if args.action == "poweroff":
+        elif args.action == "poweroff":
             session.request_power_off()
+        else:
+            raise ValueError(args.action)
     else:
         print(strings.status_schedule)
         system.schedule_shutdown(args.action, args.schedule_file)
