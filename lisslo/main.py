@@ -70,7 +70,7 @@ def system_event_interface():
 
     if session.no_users(args.include_remote):
         print(strings.status_shutdown)
-        if args.action == "request_reboot":
+        if args.action == "reboot":
             session.request_reboot()
         if args.action == "poweroff":
             session.request_power_off()
