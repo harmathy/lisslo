@@ -49,7 +49,7 @@ class Session():
         return self._session_proxy.VTNr
 
     def type(self):
-         return self._session_proxy.Type
+        return self._session_proxy.Type
 
 
 def sessions():
