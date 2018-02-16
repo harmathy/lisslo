@@ -19,6 +19,7 @@ import os
 from distutils.command.build import build
 from distutils.command.install import install
 from distutils.core import setup
+from os import path
 from subprocess import run, PIPE
 
 from lisslo import strings
@@ -27,12 +28,12 @@ translations = ["de"]
 
 
 def locale_target(lang, prefix):
-    return "{0}/share/locale/{1}/LC_MESSAGES".format(prefix, lang)
+    return path.join(prefix, "share", "locale", lang, "LC_MESSAGES")
 
 
 def compile_translation(lang, name, prefix):
-    po_path = "po/{0}.po".format(lang)
-    mo_path = "{0}/{1}.mo".format(locale_target(lang, prefix), name)
+    po_path = path.join("po", "{0}.po".format(lang))
+    mo_path = path.join(locale_target(lang, prefix), "{0}.mo".format(name))
     run(["msgfmt", po_path, "-o", mo_path],
         check=True, stdout=PIPE, stderr=PIPE)
 
@@ -52,7 +53,8 @@ class CustomBuild(build):
 class CustomInstall(install):
     def run(self):
         super().run()
-        self.copy_tree(self.build_base + "/share", self.install_data + "/share")
+        self.copy_tree(path.join(self.build_base, "share"),
+                       path.join(self.install_data, "share"))
 
 
 setup(
