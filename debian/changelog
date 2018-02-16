@@ -1,3 +1,21 @@
+lisslo (0.5) walhalla; urgency=medium
+
+  * Bring quotations into line
+  * Use interactive switch
+  * Remove obsolete code
+  * Add pyqt5 dependency in debian packaging
+  * Add German translation
+  * Make message more readable
+  * Make accept button red
+  * Use include-remote switch on system insterface
+  * Fix indentation
+  * Fix action string
+  * And catch that bug
+  * Compile translations in setup.py
+  * Tell debhelper that pyqt5 is provided
+
+ -- Max Harmathy <max.harmathy@web.de>  Fri, 16 Feb 2018 10:50:15 +0100
+
 lisslo (0.4) walhalla; urgency=medium
 
   * Pass other sessions data for further processing
