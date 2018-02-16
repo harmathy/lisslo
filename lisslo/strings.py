@@ -17,7 +17,7 @@ import gettext
 
 # general
 application = "lisslo"
-version = "0.4"
+version = "0.6"
 
 gettext.bindtextdomain(application)
 gettext.textdomain(application)
