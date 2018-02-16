@@ -1,3 +1,10 @@
+lisslo (0.6) walhalla; urgency=medium
+
+  * Use path join to concatenate paths
+  * Increment version number
+
+ -- Max Harmathy <max.harmathy@web.de>  Fri, 16 Feb 2018 11:07:03 +0100
+
 lisslo (0.5) walhalla; urgency=medium
 
   * Bring quotations into line
