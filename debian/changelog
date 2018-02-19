@@ -1,3 +1,11 @@
+lisslo (0.7) walhalla; urgency=medium
+
+  * Use breeze as fallback icon theme
+  * Add fallback icon for "important"
+  * Bump version number
+
+ -- Max Harmathy <max.harmathy@web.de>  Mon, 19 Feb 2018 14:43:13 +0100
+
 lisslo (0.6) walhalla; urgency=medium
 
   * Use path join to concatenate paths
