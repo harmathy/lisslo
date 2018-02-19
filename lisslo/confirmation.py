@@ -119,6 +119,8 @@ class ConfirmationDialog(QtWidgets.QDialog):
 
 def dialog(other_sessions, timeout):
     app = QtWidgets.QApplication([strings.application])
+    if QtGui.QIcon.themeName() == "hicolor":
+        QtGui.QIcon.setThemeName("breeze")
     confirm_dialog = ConfirmationDialog(other_sessions, timeout)
     confirm_dialog.show()
     app.exec()
