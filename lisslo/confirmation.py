@@ -35,7 +35,10 @@ class ConfirmationDialog(QtWidgets.QDialog):
         self.message_widget.setLayout(self.message_layout)
         self.message_icon = QtWidgets.QLabel(
             parent=self.message_widget,
-            pixmap=QtGui.QIcon.fromTheme("important").pixmap(48, 48),
+            pixmap=QtGui.QIcon.fromTheme(
+                "important",
+                QtGui.QIcon.fromTheme("emblem-important")
+            ).pixmap(48, 48),
         )
         self.message_layout.addWidget(self.message_icon)
         self.message_label = QtWidgets.QLabel(
