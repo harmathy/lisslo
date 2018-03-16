@@ -1,3 +1,10 @@
+lisslo (0.8) walhalla; urgency=medium
+
+  * Disallow reboot/shutdown without lisslo approval.
+    Fixes trac #23109
+
+ -- Robert Hoffmann <externer.dl.hoffmann@muenchen.de>  Fri, 16 Mar 2018 18:14:24 +0100
+
 lisslo (0.7) walhalla; urgency=medium
 
   * Use breeze as fallback icon theme

@@ -63,7 +63,8 @@ setup(
     description=strings.description,
     license="GPL3",
     packages=["lisslo"],
-    scripts=["bin/lisslo-system-event", "bin/lisslo-user-session"],
+    scripts=["bin/lisslo-system-event", "bin/lisslo-user-session", "bin/lisslo-check-allowed"],
+    data_files=[('/etc/polkit-1/rules.d', ['polkit/60-disallow-halt-shutdown.rules'])],
     requires=['pydbus', 'PyQt5'],
     cmdclass=dict(build=CustomBuild, install=CustomInstall),
 )

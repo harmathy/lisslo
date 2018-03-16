@@ -21,10 +21,16 @@ _logind = _system_bus.get(".login1")
 
 
 def request_reboot(interactive=True):
+    with open("/tmp/lisslo-allowed", "w") as f:
+        f.write("")
+
     _logind.Reboot(interactive)
 
 
 def request_power_off(interactive=True):
+    with open("/tmp/lisslo-allowed", "w") as f:
+        f.write("")
+
     _logind.PowerOff(interactive)
 
 
