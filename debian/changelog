@@ -1,3 +1,9 @@
+lisslo (0.9) walhalla; urgency=medium
+
+  * Replace tmp-file solution with more secure client/server way
+
+ -- Robert Hoffmann <externer.dl.hoffmann@muenchen.de>  Mon, 19 Mar 2018 14:33:27 +0100
+
 lisslo (0.8) walhalla; urgency=medium
 
   * Disallow reboot/shutdown without lisslo approval.

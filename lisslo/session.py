@@ -14,24 +14,59 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 from pydbus import SystemBus
+import os
+import socket
+import sys
 
 _system_bus = SystemBus()
 _name = 'org.freedesktop.login1'
 _logind = _system_bus.get(".login1")
 
 
-def request_reboot(interactive=True):
-    with open("/tmp/lisslo-allowed", "w") as f:
-        f.write("")
+def allow_polkit_server():
+    question_expected = b'reboot or poweroff ok?'
+    answer_ok = b'ok'
+    answer_no = b'no'
 
-    _logind.Reboot(interactive)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = ('localhost', 12321)
+    sock.bind(server_address)
+    sock.listen(1)
+
+    connection, client_address = sock.accept()
+    try:
+        while True:
+            data = connection.recv(256)
+            if data:
+                if data == question_expected:
+                    connection.sendall(answer_ok)
+                    break
+                else:
+                    connection.sendall(answer_no)
+                    break
+            else:
+                # no data
+                break
+
+    finally:
+        connection.close()
+        os._exit(0)
+
+
+def request_reboot(interactive=True):
+    pid = os.fork()
+    if (pid == 0):
+        allow_polkit_server()
+    else:
+        _logind.Reboot(interactive)
 
 
 def request_power_off(interactive=True):
-    with open("/tmp/lisslo-allowed", "w") as f:
-        f.write("")
-
-    _logind.PowerOff(interactive)
+    pid = os.fork()
+    if (pid == 0):
+        allow_polkit_server()
+    else:
+        _logind.PowerOff(interactive)
 
 
 class Session():

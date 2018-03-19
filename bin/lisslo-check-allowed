@@ -1,8 +1,36 @@
-#!/bin/bash
+#!/usr/bin/python3 -Es
 
-if [ -f "/tmp/lisslo-allowed" ]; then
-        exit 0
-else
-        exit 1
-fi
+import socket
+import sys
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+server_address = ('localhost', 12321)
+try:
+    sock.connect(server_address)
+except ConnectionRefusedError:
+    print('cannot connect')
+    sys.exit(1)
+
+answer_received = ''
+answer_expected = b'ok'
+
+try:
+    message = b'reboot or poweroff ok?'
+    sock.sendall(message)
+
+    amount_received = 0
+    amount_expected = len(answer_expected)
+
+    while amount_received < amount_expected:
+        answer_received = sock.recv(256)
+        amount_received += len(answer_received)
+
+finally:
+    sock.close()
+
+    if (answer_received == answer_expected):
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
