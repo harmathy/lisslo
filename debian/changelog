@@ -1,3 +1,10 @@
+lisslo (1.0) walhalla; urgency=medium
+
+  * Favour type of shutdown of system event over user session.
+    Fixes #23654
+
+ -- Robert Hoffmann <externer.dl.hoffmann@muenchen.de>  Fri, 06 Apr 2018 12:24:03 +0200
+
 lisslo (0.9) walhalla; urgency=medium
 
   * Replace tmp-file solution with more secure client/server way

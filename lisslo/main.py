@@ -109,6 +109,10 @@ def user_session_interface():
                     return
         path = system.request_file_path(my_session.user_id, args.request_file)
         shut_down = system.read_shutdown_type(path)
+
+        if system.shutdown_is_scheduled(args.schedule_file):
+            shut_down = system.read_shutdown_type(args.schedule_file)
+
         request_shutdown(shut_down)
         return
 
