@@ -1,3 +1,9 @@
+lisslo (1.1) walhalla; urgency=medium
+
+  * slightly improved language
+
+ -- Florian Haftmann <florian.haftmann@muenchen.de>  Mon, 14 May 2018 14:46:49 +0200
+
 lisslo (1.0) walhalla; urgency=medium
 
   * Favour type of shutdown of system event over user session.

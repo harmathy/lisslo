@@ -31,7 +31,7 @@ msgstr ""
 
 #: strings.py:26
 msgid "LiMux Schedule Shutdown with Logind"
-msgstr "Herunterfahren verwalten mit Logind für LiMux"
+msgstr "Herunterfahren mit Logind verwalten (für LiMux)"
 
 #: strings.py:29
 msgid "action will be stored here"
@@ -39,50 +39,50 @@ msgstr "Aktion wird hier hinterlegt"
 
 #: strings.py:30
 msgid "consider not only local but also remote sessions"
-msgstr "betrachte nicht nur lokale, sondern auch Fernsitzungen"
+msgstr "Betrachte nicht nur lokale, sondern auch Fernsitzungen"
 
 #: strings.py:31
 msgid ""
 "schedule a shutdown with \"reboot\" or \"poweroff\" or abort a scheduled "
 "shutdown with \"cancel\""
 msgstr ""
-"plane eine Aktion zum Herunterfahren ein mit  \"reboot\" zum Neustarten oder "
-"\"poweroff\" zum Ausschalten oder breche ein geplantes Herunterfahren mit "
-"\"cancel\" ab"
+"Plane eine Aktion zum Herunterfahren ein: \"reboot\" zum Neustarten oder "
+"\"poweroff\" zum Ausschalten oder;  \"cancel\" bricht einen laufenden Plan "
+"ab"
 
 #: strings.py:33
 msgid "reason for shutdown"
-msgstr "Grund für das Herunterfahren"
+msgstr "Informeller Grund für das Herunterfahren"
 
 #: strings.py:34
 msgid "prevent logins"
-msgstr "verhindere Anmeldungen"
+msgstr "Verhindere weitere Anmeldungen"
 
 #: strings.py:35
 msgid "flag file for preventing login"
-msgstr "Signaldatei für die Verhinderung von Anmeldungen"
+msgstr "Signaldatei tur Verhinderung von Anmeldungen"
 
 #: strings.py:36
 msgid "get interactive confirmation from user"
-msgstr "verlange eine interaktive Bestätigung vom Anwender"
+msgstr "Verlange eine interaktive Bestätigung vom Anwender"
 
 #: strings.py:37
 msgid "filename in \"/run/user/$UID/\" which stores users shutdown request"
 msgstr ""
-"Dateiname unter \"/run/user/$UID/\", worin die vom Anwender Forderung zum "
-"Herunterfahren speichert wird"
+"Dateiname unter \"/run/user/$UID/\", worin die vom betreffenden Anwender "
+"gestellte Forderung zum Herunterfahren speichert wird"
 
 #: strings.py:39
 msgid "automatically shutdown after this timeout"
-msgstr "fahre automatisch herunter nach dem Ablauf dieser Zeit"
+msgstr "Fahre automatisch herunter, wenn diese Zeit verstrichen ist"
 
 #: strings.py:41
 msgid "Can not evaluate shutdown request!"
-msgstr "Die Aufforderung zum herunterfahren konnte nicht ausgewertet werden!"
+msgstr "Die Aufforderung zum Herunterfahren konnte nicht ausgewertet werden!"
 
 #: strings.py:43
 msgid "Cancel any scheduled shutdown."
-msgstr "Breche jegliches geplantes Herunterfahren ab."
+msgstr "Breche jegliches geplante Herunterfahren ab."
 
 #: strings.py:44
 msgid "There are no users sessions running. Hence we shutdown."
